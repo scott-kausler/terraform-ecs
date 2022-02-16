@@ -1,5 +1,7 @@
+data "aws_iam_account_alias" "current" {}
+
 resource "aws_s3_bucket" "tf_state" {
-  bucket = "${var.workspace}-tf-state"
+  bucket = "${data.aws_iam_account_alias.current.account_alias}-tf-state"
 
   tags = local.common_tags
 }
@@ -18,4 +20,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "tf_state" {
       sse_algorithm = "AES256"
     }
   }
+}
+
+output "tf_state" {
+  value = aws_s3_bucket.tf_state.id
 }

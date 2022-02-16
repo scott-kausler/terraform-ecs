@@ -5,7 +5,7 @@ COMMAND=plan
 WORKSPACE=
 
 terraform-setup:
-	TF_CLI_ARGS_init=" " WORKSPACE=$$(aws iam list-account-aliases --query AccountAliases[0] --output text) scripts/terraform.sh $@
+	BACKEND=local WORKSPACE=default scripts/terraform.sh $@
 
 all: vpc cluster
 

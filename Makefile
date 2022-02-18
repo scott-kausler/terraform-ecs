@@ -1,4 +1,4 @@
-.PHONY: .EXPORT_ALL_VARIABLES all vpc cluster
+.PHONY: .EXPORT_ALL_VARIABLES all vpc cluster service-build service
 
 .EXPORT_ALL_VARIABLES:
 COMMAND=plan

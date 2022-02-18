@@ -2,8 +2,6 @@ data "aws_iam_account_alias" "current" {}
 
 resource "aws_s3_bucket" "tf_state" {
   bucket = "${data.aws_iam_account_alias.current.account_alias}-tf-state"
-
-  tags = local.common_tags
 }
 
 resource "aws_s3_bucket_versioning" "tf_state" {

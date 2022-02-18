@@ -1,14 +1,16 @@
-variable "workspace" {
-    type = string
-}
-
 variable "module" {
     type = string
 }
 
 locals {
-  common_tags = {
-    Workspace        = var.workspace
+  default_tags = {
+    Workspace        = terraform.workspace
     Module = var.module
   }
+}
+
+provider "aws" {
+ default_tags {
+   tags = local.default_tags
+ }
 }

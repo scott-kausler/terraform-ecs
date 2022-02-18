@@ -1,0 +1,3 @@
+*.built.*
+.terraform
+.terraform.lock.hcl
